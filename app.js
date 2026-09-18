@@ -11,7 +11,7 @@ const decisions=[
 const citizenNames=['عمر الخطيب','نور عبدالسلام','يوسف حمدان','سارة مراد','آدم منصور','ليلى سعيد','مالك عمران','هالة شريف'];
 const jobs=['معلّم','ممرضة','مهندس','مزارع','صاحب متجر','جندي','طالبة','موظف بلدية'];
 function fmt(n){return new Intl.NumberFormat('ar-EG',{maximumFractionDigits:1}).format(n)}
-function save(){localStorage.setItem('kingdomState',JSON.stringify(state))}
+function save(){localStorage.setItem('kingdomState',JSON.stringify(state));if(window.saveCloudState)window.saveCloudState()}
 function statCard(label,value,sub,trend=''){return `<div class="stat"><small>${label}</small><strong>${value}</strong><span class="trend ${trend>=0?'up':'down'}">${trend?`${trend>0?'▲':'▼'} ${Math.abs(trend)}`:sub}</span></div>`}
 function meter(label,value){return `<div class="pulse-row"><div><span>${label}</span><b>${Math.round(value)}%</b></div><div class="meter"><i style="width:${Math.max(0,Math.min(100,value))}%"></i></div></div>`}
 function renderStats(){document.querySelector('#realmStats').innerHTML=statCard('سكان المملكة',fmt(state.population),'مواطن')+statCard('الخزانة',`${fmt(state.treasury)} مليون`,'عملة ذهبية')+statCard('رضا الشعب',`${Math.round(state.approval)}%`,'المتوسط')+statCard('استقرار المملكة',`${Math.round(state.stability)}%`,'الحالة العامة')+statCard('الناتج المحلي',`${fmt(state.gdp)} مليار`,`التضخم ${fmt(state.inflation)}%`)}

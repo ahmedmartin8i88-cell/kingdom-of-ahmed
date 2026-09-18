@@ -21,7 +21,7 @@
       <button class="nav" data-view="world">العالم المشترك</button>
       <button class="nav" data-view="shop">المتجر</button>
     </nav>
-    <div class="time-controls"><button id="pauseBtn" title="إيقاف الزمن">Ⅱ</button><button class="speed active" data-speed="1">1×</button><button class="speed" data-speed="2">2×</button><button class="speed" data-speed="4">4×</button></div>
+    <div class="top-actions"><button id="accountBtn" class="account-btn">دخول اللاعبين</button><div class="time-controls"><button id="pauseBtn" title="إيقاف الزمن">Ⅱ</button><button class="speed active" data-speed="1">1×</button><button class="speed" data-speed="2">2×</button><button class="speed" data-speed="4">4×</button></div></div>
   </header>
 
   <main>
@@ -52,8 +52,13 @@
 
   <dialog id="resultDialog"><div class="modal-mark" id="modalMark">♛</div><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalEffects"></div><button id="closeDialog">استمرار الحكم</button></dialog>
   <dialog id="welcomeDialog"><div class="modal-mark">♛</div><h2>أنشئ مملكتك في العالم</h2><p>اختر اسم الملك والمملكة ثم ابدأ منافسة الممالك المحيطة.</p><input id="kingNameInput" maxlength="24" placeholder="اسم الملك" /><input id="kingdomNameInput" maxlength="28" placeholder="اسم المملكة" /><button onclick="startRealm()">دخول العالم</button></dialog>
+  <dialog id="authDialog" class="auth-dialog"><button class="dialog-x" id="closeAuth" aria-label="إغلاق">×</button><div class="modal-mark">♛</div><h2 id="authTitle">دخول عالم الممالك</h2><p id="authHint">سجّل دخولك لتحفظ مملكتك وتظهر لباقي اللاعبين.</p><input id="authEmail" type="email" autocomplete="email" placeholder="البريد الإلكتروني" /><input id="authPassword" type="password" minlength="6" autocomplete="current-password" placeholder="كلمة السر — 6 أحرف على الأقل" /><button id="authSubmit">تسجيل الدخول</button><button id="authSwitch" class="auth-switch">إنشاء حساب جديد</button><p id="authError" class="auth-error" role="alert"></p></dialog>
   <div id="toast" role="status"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
   <script src="app.js"></script>
   <script src="world.js"></script>
+  <script src="firebase.js"></script>
 </body>
 </html>
