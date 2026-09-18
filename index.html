@@ -7,6 +7,7 @@
   <title>مملكة أحمد — محاكاة الحكم</title>
   <meta name="description" content="محاكاة عربية واقعية لإدارة مملكة من مليون مواطن ذكي." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="world.css" />
 </head>
 <body>
   <header class="topbar">
@@ -17,6 +18,8 @@
       <button class="nav" data-view="ministries">الوزارات</button>
       <button class="nav" data-view="cities">المدن</button>
       <button class="nav" data-view="diplomacy">الخارجية والجيش</button>
+      <button class="nav" data-view="world">العالم المشترك</button>
+      <button class="nav" data-view="shop">المتجر</button>
     </nav>
     <div class="time-controls"><button id="pauseBtn" title="إيقاف الزمن">Ⅱ</button><button class="speed active" data-speed="1">1×</button><button class="speed" data-speed="2">2×</button><button class="speed" data-speed="4">4×</button></div>
   </header>
@@ -41,10 +44,16 @@
     <section class="view" id="cities"><div class="page-head"><div><p class="eyebrow">من العاصمة إلى الحدود</p><h1>مدن المملكة</h1><p>التنمية غير المتوازنة تصنع الهجرة والبطالة والاضطراب.</p></div></div><div id="cityGrid" class="cards-grid"></div></section>
 
     <section class="view" id="diplomacy"><div class="page-head"><div><p class="eyebrow">ميزان القوة</p><h1>الخارجية والجيش</h1><p>ابنِ تحالفاتك واحمِ الحدود دون استنزاف الاقتصاد.</p></div></div><div class="split"><div class="panel"><h2>القوات الملكية</h2><div id="army"></div></div><div class="panel"><h2>الدول المجاورة</h2><div id="nations"></div></div></div></section>
+
+    <section class="view" id="world"><div class="page-head"><div><p class="eyebrow">الموسم العالمي الأول</p><h1>عالم الممالك</h1><p>نافس الملوك، كوّن تحالفات، افتح طرق التجارة واصعد في الترتيب.</p></div><div class="player-badge"><span>المستوى <b id="playerLevel">1</b></span><strong id="playerXp">0 خبرة</strong></div></div><div class="world-grid"><article class="panel map-panel"><div class="panel-head"><div><p class="eyebrow">الخريطة الحية</p><h2>الممالك القريبة</h2></div><button class="text-btn" onclick="refreshWorld()">تحديث العالم</button></div><div id="worldMap" class="world-map"></div></article><aside class="panel"><div class="panel-head"><div><p class="eyebrow">دوري الملوك</p><h2>الترتيب العالمي</h2></div></div><div id="leaderboard"></div></aside><article class="panel"><h2>سوق التجارة</h2><div id="tradeMarket"></div></article><article class="panel"><h2>التحالف الملكي</h2><div id="alliancePanel"></div></article></div></section>
+
+    <section class="view" id="shop"><div class="page-head"><div><p class="eyebrow">خزائن التاج</p><h1>المتجر الملكي</h1><p>استخدم الذهب الذي تكسبه من المهام والانتصارات لتطوير مملكتك.</p></div><div class="wallet">🪙 <b id="coinBalance">0</b> ذهب</div></div><div id="shopGrid" class="cards-grid"></div><div class="panel daily"><div><div class="eyebrow">مكافأة العودة</div><h2>هدية الملك اليومية</h2><p class="muted">عد كل يوم لتحصل على ذهب وخبرة.</p></div><button id="dailyReward" onclick="claimDaily()">استلام المكافأة</button></div></section>
   </main>
 
   <dialog id="resultDialog"><div class="modal-mark" id="modalMark">♛</div><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalEffects"></div><button id="closeDialog">استمرار الحكم</button></dialog>
+  <dialog id="welcomeDialog"><div class="modal-mark">♛</div><h2>أنشئ مملكتك في العالم</h2><p>اختر اسم الملك والمملكة ثم ابدأ منافسة الممالك المحيطة.</p><input id="kingNameInput" maxlength="24" placeholder="اسم الملك" /><input id="kingdomNameInput" maxlength="28" placeholder="اسم المملكة" /><button onclick="startRealm()">دخول العالم</button></dialog>
   <div id="toast" role="status"></div>
   <script src="app.js"></script>
+  <script src="world.js"></script>
 </body>
 </html>
