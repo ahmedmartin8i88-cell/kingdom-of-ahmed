@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#08131c" />
+  <title>مملكة أحمد — محاكاة الحكم</title>
+  <meta name="description" content="محاكاة عربية واقعية لإدارة مملكة من مليون مواطن ذكي." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-view="throne"><span class="crown">♛</span><span><b>مملكة أحمد</b><small id="dateLabel">السنة 1 — الربيع</small></span></button>
+    <nav>
+      <button class="nav active" data-view="throne">مجلس الحكم</button>
+      <button class="nav" data-view="people">الشعب</button>
+      <button class="nav" data-view="ministries">الوزارات</button>
+      <button class="nav" data-view="cities">المدن</button>
+      <button class="nav" data-view="diplomacy">الخارجية والجيش</button>
+    </nav>
+    <div class="time-controls"><button id="pauseBtn" title="إيقاف الزمن">Ⅱ</button><button class="speed active" data-speed="1">1×</button><button class="speed" data-speed="2">2×</button><button class="speed" data-speed="4">4×</button></div>
+  </header>
+
+  <main>
+    <section class="realm-strip" id="realmStats"></section>
+
+    <section class="view active" id="throne">
+      <div class="page-head"><div><p class="eyebrow">غرفة العرش</p><h1>صباح الخير، جلالة الملك أحمد</h1><p id="briefing">المملكة مستقرة، لكن قرارات اليوم سترسم مستقبلها.</p></div><div class="seal"><span>♛</span><small>المرسوم الملكي</small></div></div>
+      <div class="dashboard-grid">
+        <article class="panel decisions"><div class="panel-head"><div><p class="eyebrow">على مكتبك</p><h2>قرارات تنتظر أمرك</h2></div><span class="count" id="decisionCount">0</span></div><div id="decisionDeck"></div></article>
+        <aside class="panel pulse"><div class="panel-head"><div><p class="eyebrow">صوت الشارع</p><h2>نبض المجتمع</h2></div></div><div id="publicMood"></div><div class="sentiment" id="sentiment"></div></aside>
+        <article class="panel ledger"><div class="panel-head"><div><p class="eyebrow">الخزانة</p><h2>دفتر المملكة</h2></div><button class="text-btn" data-view="ministries">التفاصيل ←</button></div><div id="budgetChart" class="bars"></div></article>
+        <article class="panel chronicle"><div class="panel-head"><div><p class="eyebrow">سجل العهد</p><h2>آخر الأحداث</h2></div></div><div id="eventLog"></div></article>
+      </div>
+    </section>
+
+    <section class="view" id="people"><div class="page-head"><div><p class="eyebrow">مليون قصة حية</p><h1>شعب المملكة</h1><p>كل فئة تتغير مواقفها وفق الدخل والخدمات والقوانين والأمن.</p></div></div><div class="panel"><div id="classes" class="cards-grid"></div></div><div class="panel"><h2>عينة من المواطنين</h2><p class="muted">شخصيات مولّدة من سكان المملكة وتتغير أحوالها مع قراراتك.</p><div id="citizens" class="citizen-list"></div></div></section>
+
+    <section class="view" id="ministries"><div class="page-head"><div><p class="eyebrow">الدولة تعمل</p><h1>مجلس الوزراء</h1><p>ارفع تمويل وزارة لتحسين نتائجها، لكن راقب عجز الخزانة.</p></div></div><div id="ministryGrid" class="cards-grid"></div></section>
+
+    <section class="view" id="cities"><div class="page-head"><div><p class="eyebrow">من العاصمة إلى الحدود</p><h1>مدن المملكة</h1><p>التنمية غير المتوازنة تصنع الهجرة والبطالة والاضطراب.</p></div></div><div id="cityGrid" class="cards-grid"></div></section>
+
+    <section class="view" id="diplomacy"><div class="page-head"><div><p class="eyebrow">ميزان القوة</p><h1>الخارجية والجيش</h1><p>ابنِ تحالفاتك واحمِ الحدود دون استنزاف الاقتصاد.</p></div></div><div class="split"><div class="panel"><h2>القوات الملكية</h2><div id="army"></div></div><div class="panel"><h2>الدول المجاورة</h2><div id="nations"></div></div></div></section>
+  </main>
+
+  <dialog id="resultDialog"><div class="modal-mark" id="modalMark">♛</div><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalEffects"></div><button id="closeDialog">استمرار الحكم</button></dialog>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
