@@ -5,7 +5,7 @@ const authDialog=document.querySelector('#authDialog'),accountBtn=document.query
 let registerMode=false,cloudReady=false,cloudTimer=null,unsubscribeKingdoms=null,unsubscribeIncoming=null,unsubscribeOutgoing=null;
 let incomingRequests=[],outgoingRequests=[],selectedKingdomId=null;
 
-function setAuthMode(register){registerMode=register;document.querySelector('#authTitle').textContent=register?'إنشاء حساب ملكي':'دخول عالم الممالك';document.querySelector('#authHint').textContent=register?'أنشئ حسابًا مجانيًا لحفظ مملكتك على أي جهاز.':'سجّل دخولك لتحميل مملكتك واللعب مع الآخرين.';authSubmit.textContent=register?'إنشاء الحساب':'تسجيل الدخول';authSwitch.textContent=register?'لدي حساب بالفعل':'إنشاء حساب جديد';authError.textContent=''}
+function setAuthMode(register){registerMode=register;document.querySelector('#authTitle').textContent=register?'إنشاء حساب في WAR OF CROWNS':'دخول WAR OF CROWNS';document.querySelector('#authHint').textContent=register?'أنشئ حسابًا مجانيًا لحفظ مملكتك على أي جهاز.':'سجّل دخولك لتحميل مملكتك واللعب مع الآخرين.';authSubmit.textContent=register?'إنشاء الحساب':'تسجيل الدخول';authSwitch.textContent=register?'لدي حساب بالفعل':'إنشاء حساب جديد';authError.textContent=''}
 accountBtn.onclick=()=>{if(auth.currentUser){if(confirm('هل تريد تسجيل الخروج من المملكة؟'))auth.signOut()}else{setAuthMode(false);authDialog.showModal()}};
 document.querySelector('#closeAuth').onclick=()=>authDialog.close();
 authSwitch.onclick=()=>setAuthMode(!registerMode);

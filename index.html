@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#08131c" />
-  <title>مملكة أحمد — محاكاة الحكم</title>
-  <meta name="description" content="محاكاة عربية واقعية لإدارة مملكة من مليون مواطن ذكي." />
+  <title>WAR OF CROWNS — صراع الممالك</title>
+  <meta name="description" content="WAR OF CROWNS — ابنِ مملكتك، كوّن التحالفات، ونافس الملوك في عالم عربي مشترك." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="world.css" />
 </head>
 <body>
   <header class="topbar">
-    <button class="brand" data-view="throne"><span class="crown">♛</span><span><b>مملكة أحمد</b><small id="dateLabel">السنة 1 — الربيع</small></span></button>
+    <button class="brand" data-view="throne" aria-label="WAR OF CROWNS — الصفحة الرئيسية"><span class="crown-logo">W</span><span><b class="brand-title">WAR OF CROWNS</b><small id="dateLabel">السنة 1 — الربيع</small></span></button>
     <nav>
       <button class="nav active" data-view="throne">مجلس الحكم</button>
       <button class="nav" data-view="people">الشعب</button>
@@ -28,7 +29,7 @@
     <section class="realm-strip" id="realmStats"></section>
 
     <section class="view active" id="throne">
-      <div class="page-head"><div><p class="eyebrow">غرفة العرش</p><h1>صباح الخير، جلالة الملك أحمد</h1><p id="briefing">المملكة مستقرة، لكن قرارات اليوم سترسم مستقبلها.</p></div><div class="seal"><span>♛</span><small>المرسوم الملكي</small></div></div>
+      <div class="page-head"><div><p class="eyebrow">WAR OF CROWNS · غرفة العرش</p><h1 id="royalGreeting">صباح الخير، جلالة الملك أحمد</h1><p id="briefing">المملكة مستقرة، لكن قرارات اليوم سترسم مستقبلها.</p></div><div class="seal"><span>♛</span><small>المرسوم الملكي</small></div></div>
       <div class="dashboard-grid">
         <article class="panel decisions"><div class="panel-head"><div><p class="eyebrow">على مكتبك</p><h2>قرارات تنتظر أمرك</h2></div><span class="count" id="decisionCount">0</span></div><div id="decisionDeck"></div></article>
         <aside class="panel pulse"><div class="panel-head"><div><p class="eyebrow">صوت الشارع</p><h2>نبض المجتمع</h2></div></div><div id="publicMood"></div><div class="sentiment" id="sentiment"></div></aside>
@@ -51,8 +52,8 @@
   </main>
 
   <dialog id="resultDialog"><div class="modal-mark" id="modalMark">♛</div><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalEffects"></div><button id="closeDialog">استمرار الحكم</button></dialog>
-  <dialog id="welcomeDialog"><div class="modal-mark">♛</div><h2>أنشئ مملكتك في العالم</h2><p>اختر اسم الملك والمملكة ثم ابدأ منافسة الممالك المحيطة.</p><input id="kingNameInput" maxlength="24" placeholder="اسم الملك" /><input id="kingdomNameInput" maxlength="28" placeholder="اسم المملكة" /><button onclick="startRealm()">دخول العالم</button></dialog>
-  <dialog id="authDialog" class="auth-dialog"><button class="dialog-x" id="closeAuth" aria-label="إغلاق">×</button><div class="modal-mark">♛</div><h2 id="authTitle">دخول عالم الممالك</h2><p id="authHint">سجّل دخولك لتحفظ مملكتك وتظهر لباقي اللاعبين.</p><input id="authEmail" type="email" autocomplete="email" placeholder="البريد الإلكتروني" /><input id="authPassword" type="password" minlength="6" autocomplete="current-password" placeholder="كلمة السر — 6 أحرف على الأقل" /><button id="authSubmit">تسجيل الدخول</button><button id="authSwitch" class="auth-switch">إنشاء حساب جديد</button><p id="authError" class="auth-error" role="alert"></p></dialog>
+  <dialog id="welcomeDialog"><div class="game-lockup"><span>♛</span><strong>WAR OF CROWNS</strong><small>BUILD YOUR KINGDOM. RULE THE WORLD.</small></div><h2>أنشئ مملكتك في العالم</h2><p>اختر اسم الملك والمملكة ثم ابدأ منافسة الممالك المحيطة.</p><input id="kingNameInput" maxlength="24" placeholder="اسم الملك" /><input id="kingdomNameInput" maxlength="28" placeholder="اسم المملكة" /><button onclick="startRealm()">ابدأ الحكم</button></dialog>
+  <dialog id="authDialog" class="auth-dialog"><button class="dialog-x" id="closeAuth" aria-label="إغلاق">×</button><div class="game-lockup"><span>♛</span><strong>WAR OF CROWNS</strong><small>BUILD YOUR KINGDOM. RULE THE WORLD.</small></div><h2 id="authTitle">دخول WAR OF CROWNS</h2><p id="authHint">سجّل دخولك لتحفظ مملكتك وتظهر لباقي اللاعبين.</p><input id="authEmail" type="email" autocomplete="email" placeholder="البريد الإلكتروني" /><input id="authPassword" type="password" minlength="6" autocomplete="current-password" placeholder="كلمة السر — 6 أحرف على الأقل" /><button id="authSubmit">تسجيل الدخول</button><button id="authSwitch" class="auth-switch">إنشاء حساب جديد</button><p id="authError" class="auth-error" role="alert"></p></dialog>
   <dialog id="kingdomDialog" class="auth-dialog kingdom-dialog"><button class="dialog-x" id="closeKingdom" aria-label="إغلاق">×</button><div class="modal-mark">♜</div><h2 id="profileKingdomName">مملكة</h2><p id="profileKingName" class="muted"></p><div class="profile-stats"><span>القوة <b id="profilePower">0</b></span><span>المستوى <b id="profileLevel">1</b></span><span>الرضا <b id="profileApproval">0%</b></span></div><p id="allianceActionStatus" class="muted"></p><button id="sendAllianceBtn">إرسال طلب تحالف</button></dialog>
   <div id="toast" role="status"></div>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
